@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard — DevNotes</title>
+  <link rel="icon" href="assets/icons/devnotes-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="js/theme.js"></script>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Your private DevNotes workspace for organizing developer knowledge.">
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="side-brand"><a class="brand" href="index.html"><img class="brand-logo"
+            src="assets/icons/devnotes-logo.svg" alt="DevNotes logo"><span
+            class="brand-name">Dev<span>Notes</span></span></a></div>
+      <div class="side-scroll">
+        <div class="side-section">WORKSPACE</div><button class="side-link side-filter-link active" type="button"
+          data-side-filter="all"><i data-lucide="file-text"></i>Notes<span class="count"
+            id="sideCount">0</span></button><button class="side-link side-filter-link" type="button"
+          data-side-filter="favorites"><i data-lucide="star"></i>Favorites</button>
+        <div class="side-nav-group category-nav-group" id="categoryNavGroup"><button
+            class="side-link side-filter-link category-toggle" type="button" data-side-filter="categories"
+            aria-expanded="false" aria-controls="categoryLinks"><i data-lucide="folder"></i><span>Categories</span><span
+              class="side-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span></button>
+          <div class="side-dynamic category-submenu" id="categoryLinks" aria-label="Categories"></div>
+        </div><button class="side-link side-filter-link" type="button" data-side-filter="archive"><i
+            data-lucide="archive"></i>Archive</button><button class="side-link side-filter-link" type="button"
+          data-side-filter="trash"><i data-lucide="trash-2"></i>Trash</button>
+      </div>
+      <div class="side-bottom"><a class="side-link" href="settings.html"><i
+            data-lucide="settings"></i>Settings</a><button class="side-link" id="logoutBtn"><i
+            data-lucide="log-out"></i>Sign out</button></div>
+    </aside>
+    <div class="sidebar-backdrop" data-sidebar-close></div>
+    <main class="main">
+      <header class="topbar"><button class="icon-btn mobile-sidebar" data-sidebar-toggle aria-expanded="false"
+          aria-label="Open sidebar"><i data-lucide="menu"></i></button>
+        <div class="search-box"><i data-lucide="search"></i><input id="noteSearch"
+            placeholder="Search notes, tags, or content..."><kbd>Ctrl K</kbd></div>
+        <div class="top-actions"><button class="icon-btn" id="commandButton" title="Command palette"><i
+              data-lucide="command"></i></button><button class="theme-toggle" type="button" aria-label="Switch theme"
+            aria-pressed="false">
+            <span class="theme-icon theme-icon-light"><i data-lucide="sun"></i></span>
+            <span class="theme-icon theme-icon-dark"><i data-lucide="moon"></i></span>
+            <span class="theme-knob" aria-hidden="true"></span>
+          </button><a class="profile" href="settings.html" aria-label="Open profile settings"
+            title="Open profile settings"><span class="avatar" data-avatar>U</span><span class="profile-name"
+              data-user-name>Developer</span></a></div>
+      </header>
+      <section class="dashboard-content">
+        <div class="dash-head" id="dashboardHeader">
+          <div>
+            <h1 id="dashboardTitle">Your Ideas, <span class="gradient">Organized</span></h1>
+            <p id="dashboardSubtitle">Capture thoughts, code snippets and technical knowledge — all in one place.</p>
+          </div><button class="btn btn-primary" id="newNoteBtn"><i data-lucide="plus"></i>New Note</button>
+        </div>
+        <div class="stats">
+          <div class="stat card">
+            <div class="stat-top"><span class="muted stat-label">Total notes</span>
+              <div class="stat-icon"><i data-lucide="file-text"></i></div>
+            </div><strong id="totalNotes">0</strong><small>Knowledge items</small>
+          </div>
+          <div class="stat card">
+            <div class="stat-top"><span class="muted stat-label">Snippets</span>
+              <div class="stat-icon"><i data-lucide="code-2"></i></div>
+            </div><strong id="snippetCount">0</strong><small>Reusable code</small>
+          </div>
+          <div class="stat card">
+            <div class="stat-top"><span class="muted stat-label">Favorites</span>
+              <div class="stat-icon"><i data-lucide="star"></i></div>
+            </div><strong id="favoriteCount">0</strong><small>Saved for later</small>
+          </div>
+          <div class="stat card">
+            <div class="stat-top"><span class="muted stat-label">Topics</span>
+              <div class="stat-icon"><i data-lucide="layers-3"></i></div>
+            </div><strong id="topicCount">0</strong><small>Categories</small>
+          </div>
+        </div>
+        <div class="notes-toolbar">
+          <div class="toolbar-top">
+            <div class="tabs" id="noteTabs"><button class="tab active" data-tab="all"><i
+                  data-lucide="layout-grid"></i>All Notes</button><button class="tab" data-tab="pinned"><i
+                  data-lucide="pin"></i>Pinned</button><button class="tab" data-tab="recent"><i
+                  data-lucide="clock-3"></i>Recent</button></div>
+            <div class="toolbar-summary" id="toolbarSummary">Showing your notes</div>
+          </div>
+          <div class="filter-bar">
+            <div class="filter-heading"><span class="filter-heading-icon"><i
+                  data-lucide="sliders-horizontal"></i></span>
+              <div><strong>Filter &amp; sort</strong><span>Refine your knowledge base</span></div>
+            </div>
+            <div class="filter-controls"><label class="filter-field"><span>Type</span><select
+                  class="select filter-select" id="typeFilter" aria-label="Filter by note type">
+                  <option value="">All types</option>
+                  <option value="Concept">Concept</option>
+                  <option value="Snippet">Snippet</option>
+                  <option value="Debugging">Debugging</option>
+                  <option value="Command">Command</option>
+                  <option value="Resource">Resource</option>
+                  <option value="Idea">Idea</option>
+                  <option value="Reference">Reference</option>
+                </select></label><label class="filter-field"><span>Category</span><select class="select filter-select"
+                  id="categoryFilter" aria-label="Filter by category">
+                  <option value="">All categories</option>
+                </select></label><label class="filter-field sort-field"><span>Sort</span><select class="select"
+                  id="sortNotes" aria-label="Sort notes">
+                  <option value="latest">Recently updated</option>
+                  <option value="oldest">Oldest updated</option>
+                  <option value="title">Title A–Z</option>
+                </select></label><button class="reset-filters" id="clearFilters" type="button"
+                aria-label="Reset search and filters" title="Reset search, filters and sorting"><i
+                  data-lucide="rotate-ccw"></i><span>Reset</span></button></div>
+          </div>
+        </div>
+        <div class="filter-status" id="filterStatus" aria-live="polite"></div>
+        <div class="note-grid" id="noteGrid"></div>
+      </section>
+    </main>
+  </div>
+  <div class="toast-wrap"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+
+</html>

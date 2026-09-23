@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign in — DevNotes</title>
+  <link rel="icon" href="assets/icons/devnotes-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <script src="js/theme.js"></script>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Sign in to your private DevNotes developer knowledge workspace.">
+</head>
+
+<body>
+  <main class="auth-page">
+    <button class="theme-toggle auth-theme" type="button" aria-label="Switch theme" aria-pressed="false"><span
+        class="theme-icon theme-icon-light"><i data-lucide="sun"></i></span><span class="theme-icon theme-icon-dark"><i
+          data-lucide="moon"></i></span><span class="theme-knob" aria-hidden="true"></span></button>
+    <div class="auth-layout">
+      <section class="auth-intro">
+        <a class="brand" href="index.html"><img class="brand-logo" src="assets/icons/devnotes-logo.svg"
+            alt="DevNotes logo"><span class="brand-name">Dev<span>Notes</span></span></a>
+        <h1>Your developer knowledge, <span class="gradient">one workspace.</span></h1>
+        <p>Sign in to continue organizing technical notes, snippets, debugging solutions and everything you learn while
+          building.</p>
+        <div class="auth-points">
+          <div class="auth-point"><span class="auth-point-icon"><i data-lucide="search"></i></span>Find knowledge
+            quickly</div>
+          <div class="auth-point"><span class="auth-point-icon"><i data-lucide="code-2"></i></span>Keep code close to
+            context</div>
+          <div class="auth-point"><span class="auth-point-icon"><i data-lucide="layers-3"></i></span>Organize what you
+            learn</div>
+        </div>
+      </section>
+      <section class="auth-card">
+        <div class="auth-card-header">
+          <h2>Welcome back</h2>
+          <p>Sign in to continue to your developer workspace.</p>
+        </div>
+        <form id="loginForm" class="auth-form">
+          <div class="auth-field"><label>Email</label><input class="input" type="email" name="email"
+              placeholder="you@example.com" autocomplete="email" required></div>
+          <div class="auth-field"><label>Password</label><input class="input" id="loginPassword" type="password"
+              name="password" placeholder="••••••••" autocomplete="current-password" required><button
+              class="password-toggle" type="button" data-password-toggle="#loginPassword" aria-label="Show password"
+              title="Show password"><i data-lucide="eye"></i></button></div>
+          <div class="auth-options"><label class="show-password"><input type="checkbox"
+                data-show-password="#loginPassword">Show password</label><a class="forgot-link"
+              href="forgot-password.html">Forgot password?</a></div>
+          <button class="btn btn-primary auth-submit" type="submit">Sign in <i data-lucide="arrow-right"></i></button>
+        </form>
+        <p class="auth-switch">New to DevNotes? <a href="register.html">Create an account</a></p>
+        <p class="auth-note">Secure authentication powered by the DevNotes API and MongoDB.</p>
+      </section>
+    </div>
+  </main>
+  <div class="toast-wrap"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

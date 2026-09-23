@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /categories.html
+Disallow: /note.html
+Disallow: /settings.html
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /forgot-password.html
+Disallow: /reset-password.html
+
+Sitemap: https://devnotes.vercel.app/sitemap.xml

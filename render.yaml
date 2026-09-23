@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: devnotes-api
+    runtime: node
+    buildCommand: npm --prefix server install
+    startCommand: npm --prefix server start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: COOKIE_SAMESITE
+        value: lax
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: RESET_PASSWORD_ORIGIN
+        sync: false
+      - key: COOKIE_NAME
+        value: devnotes_token
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_PORT
+        value: 587
+      - key: EMAIL_SECURE
+        value: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+      - key: EMAIL_FROM
+        sync: false

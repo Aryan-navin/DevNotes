@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Settings — DevNotes</title>
+  <link rel="icon" href="assets/icons/devnotes-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/settings.css">
+
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Manage your DevNotes profile, preferences and account settings.">
+</head>
+
+<body>
+  <div class="app-shell settings-shell">
+    <aside class="sidebar" id="settingsSidebar">
+      <div class="side-brand"><a class="brand" href="index.html"><img class="brand-logo"
+            src="assets/icons/devnotes-logo.svg" alt="DevNotes logo"><span
+            class="brand-name">Dev<span>Notes</span></span></a></div>
+      <div class="side-scroll">
+        <div class="side-section">WORKSPACE</div>
+        <a class="side-link" href="dashboard.html"><span class="side-icon"
+            data-icon="file-text"></span><span>Notes</span></a>
+        <a class="side-link" href="dashboard.html?filter=favorites"><span class="side-icon"
+            data-icon="star"></span><span>Favorites</span></a>
+        <a class="side-link" href="dashboard.html?filter=categories"><span class="side-icon"
+            data-icon="folder"></span><span>Categories</span></a>
+        <a class="side-link" href="dashboard.html?filter=archive"><span class="side-icon"
+            data-icon="archive"></span><span>Archive</span></a>
+        <a class="side-link" href="dashboard.html?filter=trash"><span class="side-icon"
+            data-icon="trash-2"></span><span>Trash</span></a>
+      </div>
+      <div class="side-bottom">
+        <a class="side-link active" href="settings.html"><span class="side-icon"
+            data-icon="settings"></span><span>Settings</span></a>
+        <button class="side-link" id="logoutBtn" type="button"><span class="side-icon"
+            data-icon="log-out"></span><span>Sign out</span></button>
+        <div class="side-motto"><span class="motto-dot"></span>
+          <div>Keep learning<br>Keep building</div>
+        </div>
+      </div>
+    </aside>
+    <div class="sidebar-backdrop" data-sidebar-close></div>
+
+    <main class="main">
+      <header class="topbar settings-topbar">
+        <button class="icon-btn mobile-sidebar" data-sidebar-toggle aria-expanded="false"
+          aria-label="Open sidebar"><span data-icon="menu"></span></button>
+        <a class="settings-back" href="dashboard.html"><span data-icon="arrow-left"></span><span>Back to
+            dashboard</span><kbd>Esc</kbd></a>
+        <div class="top-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="false"
+            title="Switch theme">
+            <span class="theme-icon theme-icon-light"><span data-icon="sun"></span></span>
+            <span class="theme-icon theme-icon-dark"><span data-icon="moon"></span></span>
+            <span class="theme-knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </header>
+
+      <section class="settings-page">
+        <div class="settings-heading">
+          <div>
+            <span class="settings-kicker">WORKSPACE PREFERENCES</span>
+            <h1>Settings</h1>
+            <p>Manage your account and customize your DevNotes experience.</p>
+          </div>
+          <div class="settings-heading-meta"><span class="settings-version">v1.0.0</span><span
+              class="settings-status"><i></i> All systems ready</span></div>
+        </div>
+
+        <div class="settings-layout">
+          <section class="settings-card card profile-card">
+            <div class="settings-card-head">
+              <div class="settings-card-icon"><span data-icon="user-round"></span></div>
+              <div><span class="section-label">PROFILE</span>
+                <h2>Profile information</h2>
+                <p>Update the name shown across your DevNotes workspace.</p>
+              </div>
+              <span class="panel-badge">Account</span>
+            </div>
+            <div class="profile-summary">
+              <div class="avatar settings-avatar" id="profileAvatar">AN</div>
+              <div class="profile-summary-main"><strong id="profileNamePreview">Your name</strong><span
+                  id="profileEmailPreview">Your account email</span></div>
+              <div class="profile-summary-meta"><span>ACCOUNT</span><strong id="profileCreatedPreview">—</strong></div>
+            </div>
+            <div class="settings-form profile-form">
+              <div class="field"><label for="settingName">Display name</label>
+                <div class="input-wrap"><span data-icon="user"></span><input class="input" id="settingName"
+                    maxlength="80" autocomplete="name" placeholder="Your name"></div>
+              </div>
+              <div class="field"><label for="settingEmail">Email address</label>
+                <div class="input-wrap"><span data-icon="mail"></span><input class="input" id="settingEmail" disabled
+                    autocomplete="email"></div><span class="field-help">Your login email is managed by your
+                  account.</span>
+              </div>
+            </div>
+            <div class="settings-actions"><button class="btn btn-primary" id="saveSettings" type="button"><span
+                  data-icon="save"></span><span>Save changes</span></button><button class="btn btn-ghost"
+                id="resetProfile" type="button">Discard changes</button><span class="save-feedback"
+                id="settingsFeedback" aria-live="polite"></span></div>
+          </section>
+
+          <section class="settings-card card appearance-card">
+            <div class="settings-card-head">
+              <div class="settings-card-icon"><span data-icon="palette"></span></div>
+              <div><span class="section-label">APPEARANCE</span>
+                <h2>Appearance</h2>
+                <p>Choose how DevNotes looks across every page.</p>
+              </div>
+            </div>
+            <div class="preference-row">
+              <div class="preference-main"><span class="preference-icon"><span data-icon="sun-moon"></span></span>
+                <div><strong>Theme</strong><span id="themeLabel">Light mode</span></div>
+              </div>
+              <button class="theme-toggle settings-theme-toggle" type="button" aria-label="Switch theme"
+                aria-pressed="false" title="Switch theme"><span class="theme-icon theme-icon-light"><span
+                    data-icon="sun"></span></span><span class="theme-icon theme-icon-dark"><span
+                    data-icon="moon"></span></span><span class="theme-knob" aria-hidden="true"></span></button>
+            </div>
+          </section>
+
+
+
+          <section class="settings-card card password-card">
+            <div class="settings-card-head">
+              <div class="settings-card-icon"><span data-icon="lock-keyhole"></span></div>
+              <div><span class="section-label">PASSWORD</span>
+                <h2>Change password</h2>
+                <p>Update your DevNotes password using your current password.</p>
+              </div>
+            </div>
+
+            <form class="password-form" id="changePasswordForm" novalidate>
+              <div class="password-grid">
+                <div class="field">
+                  <label for="currentPassword">Current password</label>
+                  <div class="input-wrap password-input-wrap">
+                    <span data-icon="lock-keyhole"></span>
+                    <input class="input" id="currentPassword" name="currentPassword" type="password"
+                      autocomplete="current-password" placeholder="Enter current password">
+                    <button class="password-eye" type="button" data-password-toggle="#currentPassword"
+                      aria-label="Show password" title="Show password"><span data-icon="eye"></span></button>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="newPassword">New password</label>
+                  <div class="input-wrap password-input-wrap">
+                    <span data-icon="lock-keyhole"></span>
+                    <input class="input" id="newPassword" name="newPassword" type="password" autocomplete="new-password"
+                      placeholder="At least 8 characters">
+                    <button class="password-eye" type="button" data-password-toggle="#newPassword"
+                      aria-label="Show password" title="Show password"><span data-icon="eye"></span></button>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="confirmNewPassword">Confirm new password</label>
+                  <div class="input-wrap password-input-wrap">
+                    <span data-icon="lock-keyhole"></span>
+                    <input class="input" id="confirmNewPassword" name="confirmPassword" type="password"
+                      autocomplete="new-password" placeholder="Re-enter new password">
+                    <button class="password-eye" type="button" data-password-toggle="#confirmNewPassword"
+                      aria-label="Show password" title="Show password"><span data-icon="eye"></span></button>
+                  </div>
+                </div>
+              </div>
+
+              <label class="show-password-row">
+                <input type="checkbox" id="showAllPasswords">
+                <span>Show passwords</span>
+              </label>
+
+              <div class="password-actions">
+                <button class="btn btn-primary" id="changePasswordBtn" type="submit"><span
+                    data-icon="shield-check"></span><span>Change password</span></button>
+                <span class="save-feedback" id="passwordFeedback" aria-live="polite"></span>
+              </div>
+            </form>
+          </section>
+
+          <section class="settings-card card data-card">
+            <div class="settings-card-head">
+              <div class="settings-card-icon"><span data-icon="database"></span></div>
+              <div><span class="section-label">DATA &amp; BACKUP</span>
+                <h2>Your DevNotes data</h2>
+                <p>Back up your notes or restore them on another DevNotes setup.</p>
+              </div>
+              <span class="panel-badge" id="backupCount">Backup</span>
+            </div>
+            <div class="data-backup-panel">
+              <div class="data-backup-copy"><strong>Keep a copy of your knowledge</strong><span>Export your notes as a
+                  JSON backup or a clean PDF document. Importing a backup keeps it private to your account and skips
+                  exact duplicates.</span></div>
+              <div class="data-actions">
+                <div class="backup-actions"><button class="btn btn-pdf-primary" id="exportPdfBtn" type="button"><span
+                      data-icon="file-text"></span><span>Export PDF</span><small>Primary backup</small></button><button
+                    class="btn btn-json-secondary" id="exportNotesBtn" type="button"><span
+                      data-icon="download"></span><span>Export JSON</span></button></div>
+                <button class="btn btn-ghost" id="importNotesBtn" type="button"><span
+                    data-icon="upload"></span><span>Import backup</span></button>
+                <input id="importNotesFile" type="file" accept=".json,.md,application/json,text/markdown" hidden>
+              </div>
+              <div class="data-feedback" id="dataFeedback" aria-live="polite"></div>
+            </div>
+          </section>
+
+          <section class="settings-card card about-card">
+            <div class="settings-card-head">
+              <div class="settings-card-icon"><span data-icon="info"></span></div>
+              <div><span class="section-label">ABOUT</span>
+                <h2>About DevNotes</h2>
+                <p>Developer-focused knowledge management for everyday learning.</p>
+              </div>
+              <span class="version-badge">Version 1.0.0</span>
+            </div>
+            <p class="about-copy">DevNotes keeps concepts, snippets, debugging solutions, commands, resources and
+              project documentation organized in one searchable workspace.</p>
+            <div class="about-grid">
+              <div><span class="about-label">BUILT FOR</span><strong>Developers &amp; learners</strong></div>
+              <div><span class="about-label">WRITING</span><strong>Markdown supported</strong></div>
+              <div><span class="about-label">STORAGE</span><strong>MongoDB workspace</strong></div>
+            </div>
+            <div class="about-footer">
+              <div class="about-quote"><span data-icon="sparkles"></span><span>Write. Organize. Build. Grow.</span>
+              </div><span class="about-status"><i></i> Built for developers</span>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="toast-wrap"></div>
+
+  <script src="js/settings-icons.js" defer></script>
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+
+</html>

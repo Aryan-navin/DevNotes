@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="js/theme.js"></script>
+  <script src="js/config.js"></script>
+  <meta name="color-scheme" content="light dark">
+  <title>New Note — DevNotes</title>
+  <link rel="icon" href="assets/icons/devnotes-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/note.css">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Write and organize a developer note in DevNotes.">
+</head>
+
+<body>
+  <div class="loading" id="loading">
+    <div class="loader"><span class="spinner"></span><span>Loading DevNotes…</span></div>
+  </div>
+
+  <div class="page">
+    <header class="header">
+      <div class="head-left">
+        <button class="back" type="button" id="backBtn" aria-label="Back to notes"><span class="icon"
+            data-icon="arrow-left"></span><span>Back to notes</span><kbd class="back-kbd">Esc</kbd></button>
+        <span class="separator"></span>
+        <span class="context"><span class="icon" data-icon="pen-line"></span><span id="modeLabel">New note</span></span>
+      </div>
+
+      <a class="brand" href="dashboard.html" aria-label="DevNotes dashboard">
+        <img src="assets/icons/devnotes-logo.svg" alt="DevNotes logo">
+        <span>Dev<span>Notes</span></span>
+      </a>
+
+      <div class="head-right">
+        <span class="save-state" id="headerState" data-state="ready"><span class="dot"></span><span class="state-text"
+            id="headerStateText">Ready to write</span></span>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme" aria-pressed="false"
+          title="Switch theme">
+          <span class="theme-icon theme-icon-light" id="sunIcon"><span class="icon" data-icon="sun"></span></span><span
+            class="theme-icon theme-icon-dark" id="moonIcon"><span class="icon" data-icon="moon"></span></span><span
+            class="theme-knob" aria-hidden="true"></span>
+        </button>
+        <button class="save-btn" id="saveBtn" type="submit" form="editorForm"><span class="icon"
+            data-icon="save"></span><span>Save note</span><kbd>Ctrl S</kbd></button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <form id="editorForm" novalidate>
+        <section class="intro">
+          <div class="title-row">
+            <input class="title" id="noteTitle" maxlength="120" autocomplete="off" placeholder="Untitled note"
+              aria-label="Note title">
+            <span class="title-count" id="titleCount">0 / 120</span>
+          </div>
+          <p class="subtitle"><span id="description">Turn your knowledge into a clean, searchable developer
+              note.</span><span class="bullet">•</span><span>Markdown supported</span></p>
+        </section>
+
+        <section class="meta-grid">
+          <div class="card type-card">
+            <div class="meta-head">
+              <div><span class="eyebrow">NOTE TYPE</span>
+                <h2>What are you writing?</h2>
+              </div>
+              <span class="type-badge" id="selectedType">Concept</span>
+            </div>
+            <div class="type-grid" id="typeGrid">
+              <button type="button" class="type-option active" data-type="Concept"><span class="icon"
+                  data-icon="file-text"></span><strong>Concept</strong><small>Learn</small></button>
+              <button type="button" class="type-option" data-type="Snippet"><span class="icon"
+                  data-icon="code"></span><strong>Snippet</strong><small>Reuse</small></button>
+              <button type="button" class="type-option" data-type="Debugging"><span class="icon"
+                  data-icon="bug"></span><strong>Debugging</strong><small>Fix</small></button>
+              <button type="button" class="type-option" data-type="Command"><span class="icon"
+                  data-icon="terminal"></span><strong>Command</strong><small>CLI</small></button>
+              <button type="button" class="type-option" data-type="Resource"><span class="icon"
+                  data-icon="book"></span><strong>Resource</strong><small>Link</small></button>
+              <button type="button" class="type-option" data-type="Idea"><span class="icon"
+                  data-icon="bulb"></span><strong>Idea</strong><small>Think</small></button>
+            </div>
+            <input type="hidden" id="noteType" value="Concept">
+          </div>
+
+          <div class="meta-side">
+            <div class="card field-card">
+              <div class="field-head"><span class="field-icon"><span class="icon" data-icon="folder"></span></span>
+                <div><label for="noteCategory">Category</label><span>Organize your note</span></div>
+              </div>
+              <input class="input" id="noteCategory" list="categoryList" value="Programming" autocomplete="off"
+                placeholder="e.g. Frontend">
+              <datalist id="categoryList"></datalist>
+            </div>
+            <div class="card field-card">
+              <div class="field-head"><span class="field-icon"><span class="icon" data-icon="tags"></span></span>
+                <div><label for="noteTags">Tags</label><span>Separate with commas</span></div>
+              </div>
+              <input class="input" id="noteTags" autocomplete="off" placeholder="react, hooks, frontend">
+            </div>
+          </div>
+        </section>
+
+        <section class="workspace card">
+          <div class="workspace-top">
+            <div class="workspace-title"><span class="workspace-icon"><span class="icon"
+                  data-icon="file-code"></span></span>
+              <div><strong>Editor</strong><span>Write clearly. Save knowledge for later.</span></div>
+            </div>
+            <div class="view-area">
+              <div class="views" role="tablist" aria-label="Editor view">
+                <button class="view-btn active" type="button" role="tab" aria-selected="true" data-view="split"><span
+                    class="icon" data-icon="columns"></span>Split</button>
+                <button class="view-btn" type="button" role="tab" aria-selected="false" data-view="write"><span
+                    class="icon" data-icon="pencil"></span>Write</button>
+                <button class="view-btn" type="button" role="tab" aria-selected="false" data-view="preview"><span
+                    class="icon" data-icon="eye"></span>Preview</button>
+              </div>
+              <div class="editor-actions" aria-label="Note actions">
+                <button class="history-btn" type="button" id="historyBtn" title="View note history"><span class="icon"
+                    data-icon="history"></span><span>History</span></button>
+                <button class="history-btn primary" type="button" id="exportPdfBtn"
+                  title="Export this note as PDF"><span class="icon" data-icon="file-text"></span><span>Export
+                    PDF</span></button>
+                <button class="history-btn" type="button" id="exportMarkdownBtn"
+                  title="Export this note as Markdown"><span class="icon"
+                    data-icon="download"></span><span>Markdown</span></button>
+              </div>
+              <span class="shortcut">Ctrl + Enter</span>
+            </div>
+          </div>
+
+          <div class="toolbar" aria-label="Formatting toolbar">
+            <div class="tool-group">
+              <button class="tool" type="button" data-command="heading" title="Heading"><span
+                  class="tool-text">H</span></button>
+              <button class="tool" type="button" data-command="bold" title="Bold"><b>B</b></button>
+              <button class="tool" type="button" data-command="italic" title="Italic"><em>I</em></button>
+              <button class="tool" type="button" data-command="inline" title="Inline code"><span class="icon"
+                  data-icon="code"></span></button>
+            </div>
+            <span class="divider"></span>
+            <div class="tool-group">
+              <button class="tool" type="button" data-command="code" title="Code block"><span class="icon"
+                  data-icon="code-square"></span></button>
+              <label class="language-picker" title="Code block language"><span>Code</span><select id="codeLanguage"
+                  aria-label="Code block language">
+                  <option value="js">JS</option>
+                  <option value="html">HTML</option>
+                  <option value="css">CSS</option>
+                  <option value="json">JSON</option>
+                  <option value="bash">Bash</option>
+                  <option value="python">Python</option>
+                  <option value="sql">SQL</option>
+                  <option value="text">Text</option>
+                </select></label>
+              <button class="tool" type="button" data-command="bullet" title="Bullet list"><span class="icon"
+                  data-icon="list"></span></button>
+              <button class="tool" type="button" data-command="quote" title="Quote"><span class="icon"
+                  data-icon="quote"></span></button>
+              <button class="tool" type="button" data-command="link" title="Link"><span class="icon"
+                  data-icon="link"></span></button>
+              <button class="tool" type="button" data-command="hr" title="Divider"><span class="icon"
+                  data-icon="minus"></span></button>
+            </div>
+            <span class="divider"></span>
+            <div class="tool-group">
+              <button class="tool" type="button" data-command="undo" title="Undo"><span class="icon"
+                  data-icon="undo"></span></button>
+              <button class="tool" type="button" data-command="redo" title="Redo"><span class="icon"
+                  data-icon="redo"></span></button>
+            </div>
+            <span class="spacer"></span>
+            <button class="shortcut-btn" type="button" id="shortcutsBtn" title="Keyboard shortcuts"><span class="icon"
+                data-icon="keyboard"></span><span>Shortcuts</span><kbd>?</kbd></button><span
+              class="markdown-ready"><span class="icon" data-icon="sparkles"></span>Markdown ready</span>
+          </div>
+
+          <div class="statusbar">
+            <div class="status-left"><span class="status-main" id="statusMain" data-state="ready"><span
+                  class="status-dot"></span><span id="statusText">Ready to write</span></span><span>•</span><span
+                id="wordCount">0 words</span><span>•</span><span id="charCount">0 characters</span></div>
+            <div class="status-right"><span>Tab for indentation</span><span>Ctrl / ⌘ + S to save</span></div>
+          </div>
+
+          <div class="editor-layout" id="editorLayout" data-view="split">
+            <div class="editor-pane">
+              <div class="pane-label"><span class="icon" data-icon="terminal"></span><span>Markdown</span></div>
+              <textarea class="code-editor" id="noteContent" spellcheck="false" autocomplete="off"
+                placeholder="# My note&#10;&#10;Write something useful...&#10;&#10;Use Markdown to structure your knowledge."></textarea>
+            </div>
+            <article class="preview-pane" id="previewPane">
+              <div class="pane-label"><span class="icon" data-icon="eye"></span><span>Live preview</span></div>
+              <div id="previewContent"></div>
+            </article>
+          </div>
+
+          <div class="workspace-footer">
+            <div class="tip"><span class="icon" data-icon="info"></span><span>Tip: Use headings, code blocks and lists
+                to make notes easier to scan.</span></div><span class="draft-status" id="draftStatus"><span class="icon"
+                data-icon="save-draft"></span><span>Draft not saved</span></span>
+            <span id="updatedLabel">New note</span>
+          </div>
+        </section>
+      </form>
+    </main>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <div class="modal-backdrop" id="draftModal" role="dialog" aria-modal="true" aria-labelledby="draftTitle"
+    aria-describedby="draftDescription">
+    <div class="modal draft-modal">
+      <div class="modal-icon"><span class="icon" data-icon="save-draft"></span></div>
+      <span class="eyebrow">DRAFT RECOVERY</span>
+      <h3 id="draftTitle">Unsaved draft found</h3>
+      <p id="draftDescription">We found unfinished content from an earlier DevNotes session. Would you like to restore
+        it?</p>
+      <div class="draft-meta"><span class="dot"></span><span id="draftMeta">Saved locally</span></div>
+      <div class="modal-actions"><button class="modal-btn" type="button" id="discardDraftBtn">Discard
+          draft</button><button class="modal-btn primary" type="button" id="restoreDraftBtn">Restore draft</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="shortcutModal" role="dialog" aria-modal="true" aria-labelledby="shortcutTitle">
+    <div class="modal shortcut-modal">
+      <div class="modal-icon"><span class="icon" data-icon="keyboard"></span></div>
+      <div class="modal-head-row">
+        <div><span class="eyebrow">QUICK REFERENCE</span>
+          <h3 id="shortcutTitle">Keyboard shortcuts</h3>
+        </div><button class="modal-close" type="button" id="shortcutClose" aria-label="Close shortcuts">×</button>
+      </div>
+      <div class="shortcut-list">
+        <div><span>Save note</span><kbd>Ctrl / ⌘ + S</kbd></div>
+        <div><span>Save &amp; close</span><kbd>Ctrl / ⌘ + Enter</kbd></div>
+        <div><span>Bold</span><kbd>Ctrl / ⌘ + B</kbd></div>
+        <div><span>Italic</span><kbd>Ctrl / ⌘ + I</kbd></div>
+        <div><span>Undo / Redo</span><kbd>Ctrl / ⌘ + Z</kbd><kbd>Ctrl / ⌘ + Y</kbd></div>
+        <div><span>Dashboard</span><kbd>Esc</kbd></div>
+        <div><span>This help</span><kbd>?</kbd></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="historyModal" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+    <div class="modal history-modal">
+      <div class="modal-head-row">
+        <div><span class="eyebrow">NOTE HISTORY</span>
+          <h3 id="historyTitle">Version history</h3>
+        </div>
+        <button class="modal-close" type="button" id="historyClose" aria-label="Close version history">×</button>
+      </div>
+      <p>Review previous saved versions of this note. Restoring a version creates a new history entry, so nothing is
+        lost.</p>
+      <div class="history-list" id="historyList">
+        <div class="history-loading">Loading history…</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="leaveModal" role="dialog" aria-modal="true" aria-labelledby="leaveTitle">
+    <div class="modal">
+      <div class="modal-icon"><span class="icon" data-icon="alert"></span></div>
+      <h3 id="leaveTitle">Leave without saving?</h3>
+      <p>You have unsaved changes. If you leave this page now, those changes will be lost.</p>
+      <div class="modal-actions"><button class="modal-btn" type="button" id="stayBtn">Keep editing</button><button
+          class="modal-btn primary" type="button" id="leaveBtn">Leave page</button></div>
+    </div>
+  </div>
+
+  <script src="js/note-page.js" defer></script>
+</body>
+
+</html>

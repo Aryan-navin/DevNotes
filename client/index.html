@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description"
+    content="DevNotes is a focused developer knowledge base for technical notes, code snippets, debugging solutions, commands, resources and ideas.">
+  <title>DevNotes — Your Developer Knowledge Base</title>
+  <link rel="icon" href="assets/icons/devnotes-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/theme.js"></script>
+  <link rel="canonical" href="https://devnotes.vercel.app/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DevNotes — Your Developer Knowledge Base">
+  <meta property="og:description"
+    content="Capture, organize and revisit your programming knowledge in one focused developer workspace.">
+  <meta property="og:url" content="https://devnotes.vercel.app/">
+  <meta property="og:site_name" content="DevNotes">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DevNotes — Your Developer Knowledge Base">
+  <meta name="twitter:description"
+    content="A focused developer workspace for technical notes, snippets, debugging solutions and resources.">
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"DevNotes","url":"https://devnotes.vercel.app/","description":"A focused developer knowledge base for technical notes, code snippets, debugging solutions, commands, resources and ideas.","applicationCategory":"DeveloperApplication","operatingSystem":"Web"}</script>
+</head>
+
+<body>
+  <header class="landing-header">
+    <nav class="landing-nav"><a class="brand" href="index.html"><img class="brand-logo"
+          src="assets/icons/devnotes-logo.svg" alt="DevNotes logo"><span
+          class="brand-name">Dev<span>Notes</span></span></a>
+      <div class="nav-links"><a href="#features">Features</a><a href="#workflow">Workflow</a><a
+          href="#preview">Preview</a></div>
+      <div class="nav-actions"><button class="theme-toggle" type="button" aria-label="Switch theme"
+          aria-pressed="false">
+          <span class="theme-icon theme-icon-light"><i data-lucide="sun"></i></span>
+          <span class="theme-icon theme-icon-dark"><i data-lucide="moon"></i></span>
+          <span class="theme-knob" aria-hidden="true"></span>
+        </button><a class="btn btn-ghost" href="login.html">Sign in</a><a class="btn btn-primary"
+          href="register.html">Get Started <i data-lucide="arrow-up-right"></i></a><button
+          class="mobile-menu-btn icon-btn" data-mobile-menu aria-label="Open menu"><i data-lucide="menu"></i></button>
+      </div>
+      <div class="mobile-menu"><a href="#features">Features</a><a href="#workflow">Workflow</a><a
+          href="#preview">Preview</a><a href="login.html">Sign in</a><a href="register.html">Get Started</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container"><span class="eyebrow reveal"><span class="status-dot"></span> Built for developers</span>
+        <h1 class="reveal">Your knowledge.<br><span class="gradient">Organized for code.</span></h1>
+        <p class="reveal">A focused developer workspace for technical notes, code snippets, debugging solutions,
+          commands, learning resources and project documentation.</p>
+        <div class="hero-actions reveal"><a class="btn btn-primary" href="register.html">Start Writing <i
+              data-lucide="arrow-right"></i></a><a class="btn btn-secondary" href="#preview"><i data-lucide="play"></i>
+            Explore DevNotes</a></div>
+        <div class="preview-wrap reveal" id="preview">
+          <div class="preview">
+            <div class="preview-top"><b></b><b></b><b></b><span class="preview-title">DevNotes — Knowledge
+                Workspace</span></div>
+            <div class="preview-body">
+              <aside class="preview-side"><a class="brand" href="#"><img class="brand-logo"
+                    src="assets/icons/devnotes-logo.svg" alt=""><span
+                    class="brand-name">Dev<span>Notes</span></span></a>
+                <div class="side-label">WORKSPACE</div>
+                <div class="preview-nav active"><i data-lucide="file-text"></i>Notes</div>
+                <div class="preview-nav"><i data-lucide="star"></i>Favorites</div>
+                <div class="preview-nav"><i data-lucide="folder"></i>Categories</div>
+                <div class="preview-nav"><i data-lucide="archive"></i>Archive</div>
+                <div class="side-label">TAGS</div>
+                <div class="preview-nav"><i data-lucide="hash"></i>React</div>
+                <div class="preview-nav"><i data-lucide="hash"></i>JavaScript</div>
+                <div class="preview-nav"><i data-lucide="hash"></i>Node.js</div>
+              </aside>
+              <div class="preview-main">
+                <div class="preview-search"><i data-lucide="search"></i>Search notes, tags, or content... <span
+                    class="preview-search-shortcut">Ctrl K</span></div>
+                <div class="preview-heading">
+                  <div><small>Developer workspace</small>
+                    <h3>Your Ideas, <span class="gradient">Organized</span></h3>
+                  </div><span class="btn btn-primary preview-new-note">+ New Note</span>
+                </div>
+                <div class="preview-stats">
+                  <div class="mini-stat"><small>Total notes</small><strong>128</strong></div>
+                  <div class="mini-stat"><small>Snippets</small><strong>42</strong></div>
+                  <div class="mini-stat"><small>Topics</small><strong>18</strong></div>
+                </div>
+                <div class="preview-cards">
+                  <div class="preview-card">
+                    <div class="preview-icon"><i data-lucide="file-text"></i></div>
+                    <h4>React Hooks Guide</h4>
+                    <p>A quick reference for commonly used React hooks.</p>
+                  </div>
+                  <div class="preview-card">
+                    <div class="preview-icon"><i data-lucide="lightbulb"></i></div>
+                    <h4>Project Ideas</h4>
+                    <p>Practical ideas to build and learn from.</p>
+                  </div>
+                  <div class="preview-card">
+                    <div class="preview-icon"><i data-lucide="code-2"></i></div>
+                    <h4>CSS Tips & Tricks</h4>
+                    <p>Useful techniques for modern web interfaces.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head reveal"><span class="section-label">Everything in one place</span>
+          <h2>A better way to <span class="gradient">remember code.</span></h2>
+          <p>Keep your technical knowledge structured instead of scattered across files, bookmarks and old
+            conversations.</p>
+        </div>
+        <div class="features">
+          <article class="feature card reveal">
+            <div class="feature-icon"><i data-lucide="notebook-pen"></i></div>
+            <h3>Technical Notes</h3>
+            <p>Capture concepts, explanations and project documentation in a focused workspace.</p>
+          </article>
+          <article class="feature card reveal">
+            <div class="feature-icon"><i data-lucide="code-2"></i></div>
+            <h3>Code Snippets</h3>
+            <p>Keep reusable code close to the explanations and context that make it useful.</p>
+          </article>
+          <article class="feature card reveal">
+            <div class="feature-icon"><i data-lucide="bug"></i></div>
+            <h3>Debugging Journal</h3>
+            <p>Record errors and solutions so you can reuse what you learned later.</p>
+          </article>
+          <article class="feature card reveal">
+            <div class="feature-icon"><i data-lucide="search"></i></div>
+            <h3>Instant Search</h3>
+            <p>Find notes, tags, commands and ideas quickly with keyboard-friendly search.</p>
+          </article>
+          <article class="feature card reveal">
+            <div class="feature-icon"><i data-lucide="tags"></i></div>
+            <h3>Smart Organization</h3>
+            <p>Use categories, tags, favorites and filters to keep your knowledge clean.</p>
+          </article>
+          <article class="feature card reveal">
+            <div class="feature-icon"><i data-lucide="command"></i></div>
+            <h3>Developer First</h3>
+            <p>Markdown-style writing, code blocks and shortcuts designed around coding workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="workflow">
+      <div class="container">
+        <div class="section-head reveal"><span class="section-label">Simple workflow</span>
+          <h2>Learn it. <span class="gradient">Save it. Find it.</span></h2>
+          <p>Turn daily coding and learning into a personal knowledge base that gets more valuable over time.</p>
+        </div>
+        <div class="workflow">
+          <div class="step reveal"><span class="step-number">01</span>
+            <div class="step-icon"><i data-lucide="pen-line"></i></div>
+            <h3>Capture</h3>
+            <p>Save useful concepts, snippets, commands and solutions while you work.</p>
+          </div>
+          <div class="step reveal"><span class="step-number">02</span>
+            <div class="step-icon"><i data-lucide="layers-2"></i></div>
+            <h3>Organize</h3>
+            <p>Give each piece of knowledge a clear type, category and set of tags.</p>
+          </div>
+          <div class="step reveal"><span class="step-number">03</span>
+            <div class="step-icon"><i data-lucide="zap"></i></div>
+            <h3>Retrieve</h3>
+            <p>Search your own knowledge base when the same problem appears again.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cta reveal"><span class="eyebrow">Start building your knowledge base</span>
+      <h2>Your next great project starts with <span class="gradient">what you remember.</span></h2>
+      <p>Create a focused developer workspace and turn scattered learning into reusable knowledge.</p><a
+        class="btn btn-primary" href="register.html">Start with DevNotes <i data-lucide="arrow-right"></i></a>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><a class="brand" href="#"><img class="brand-logo" src="assets/icons/devnotes-logo.svg"
+            alt="DevNotes logo"><span class="brand-name">Dev<span>Notes</span></span></a>
+        <p class="footer-description">Your personal developer knowledge base.</p>
+      </div>
+      <div class="footer-links"><a href="#features">Features</a><a href="#workflow">Workflow</a><a
+          href="login.html">Sign in</a><a href="register.html">Get started</a></div>
+      <p>© <span data-year></span> DevNotes</p>
+    </div>
+  </footer>
+  <div class="toast-wrap"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

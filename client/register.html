@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Create account — DevNotes</title>
+  <link rel="icon" href="assets/icons/devnotes-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <script src="js/theme.js"></script>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Create your private DevNotes developer knowledge workspace.">
+</head>
+
+<body>
+  <main class="auth-page">
+    <button class="theme-toggle auth-theme" type="button" aria-label="Switch theme" aria-pressed="false"><span
+        class="theme-icon theme-icon-light"><i data-lucide="sun"></i></span><span class="theme-icon theme-icon-dark"><i
+          data-lucide="moon"></i></span><span class="theme-knob" aria-hidden="true"></span></button>
+    <div class="auth-layout">
+      <section class="auth-intro">
+        <a class="brand" href="index.html"><img class="brand-logo" src="assets/icons/devnotes-logo.svg"
+            alt="DevNotes logo"><span class="brand-name">Dev<span>Notes</span></span></a>
+        <h1>Build your personal <span class="gradient">developer memory.</span></h1>
+        <p>Create a focused workspace for concepts, snippets, commands, debugging solutions and project knowledge.</p>
+        <div class="auth-points">
+          <div class="auth-point"><span class="auth-point-icon"><i data-lucide="notebook-pen"></i></span>Capture what
+            you learn</div>
+          <div class="auth-point"><span class="auth-point-icon"><i data-lucide="tags"></i></span>Organize with context
+          </div>
+          <div class="auth-point"><span class="auth-point-icon"><i data-lucide="zap"></i></span>Retrieve it instantly
+          </div>
+        </div>
+      </section>
+      <section class="auth-card">
+        <div class="auth-card-header">
+          <h2>Create your workspace</h2>
+          <p>Start turning what you learn into reusable developer knowledge.</p>
+        </div>
+        <form id="registerForm" class="auth-form">
+          <div class="auth-field"><label>Name</label><input class="input" name="name" placeholder="Your name"
+              autocomplete="name" required></div>
+          <div class="auth-field"><label>Email</label><input class="input" type="email" name="email"
+              placeholder="you@example.com" autocomplete="email" required></div>
+          <div class="auth-field"><label>Password</label><input class="input" id="registerPassword" type="password"
+              name="password" minlength="6" placeholder="At least 6 characters" autocomplete="new-password"
+              required><button class="password-toggle" type="button" data-password-toggle="#registerPassword"
+              aria-label="Show password" title="Show password"><i data-lucide="eye"></i></button></div>
+          <div class="auth-field"><label>Confirm password</label><input class="input" id="confirmPassword"
+              type="password" name="confirmPassword" minlength="6" placeholder="Repeat your password"
+              autocomplete="new-password" required><button class="password-toggle" type="button"
+              data-password-toggle="#confirmPassword" aria-label="Show password" title="Show password"><i
+                data-lucide="eye"></i></button></div>
+          <label class="show-password"><input type="checkbox" data-show-password="#registerPassword"
+              data-confirm="#confirmPassword">Show passwords</label>
+          <button class="btn btn-primary auth-submit" type="submit">Create account <i
+              data-lucide="arrow-right"></i></button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+        <p class="auth-note">Your account is securely stored in the DevNotes database.</p>
+      </section>
+    </div>
+  </main>
+  <div class="toast-wrap"></div>
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
