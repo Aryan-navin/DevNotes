@@ -6,7 +6,7 @@ const express=require("express"); const cors=require("cors"); const helmet=requi
 const connectDB=require("./config/db"); const validateEnv=require("./config/env"); const authRoutes=require("./routes/auth.routes"); const noteRoutes=require("./routes/notes.routes"); const userRoutes=require("./routes/user.routes"); const {notFound,errorHandler}=require("./middleware/error.middleware");
 validateEnv();
 const app=express(); const PORT = Number(process.env.PORT || 10000);
-const HOST = process.env.HOST || "0.0.0.0"; const production=process.env.NODE_ENV==="production";
+const HOST = process.env.HOST  || "0.0.0.0"; const production=process.env.NODE_ENV==="production";
 app.disable("x-powered-by"); if(production) app.set("trust proxy",1);
 const configuredOrigins = [process.env.CLIENT_ORIGIN, process.env.RESET_PASSWORD_ORIGIN, `http://127.0.0.1:${PORT}`, `http://localhost:${PORT}`].filter(Boolean);
 const allowedOrigins=[...new Set(configuredOrigins.flatMap(value=>String(value).split(",").map(x=>x.trim()).filter(Boolean)))];

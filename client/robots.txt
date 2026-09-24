@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+
 Disallow: /dashboard.html
 Disallow: /categories.html
 Disallow: /note.html
@@ -9,4 +10,4 @@ Disallow: /register.html
 Disallow: /forgot-password.html
 Disallow: /reset-password.html
 
-Sitemap: https://devnotes.vercel.app/sitemap.xml
+Sitemap: https://dev-notes-woad.vercel.app/sitemap.xml
